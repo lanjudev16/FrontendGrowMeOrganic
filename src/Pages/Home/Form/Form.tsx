@@ -1,21 +1,23 @@
 import React, { useState } from "react";
-import { TextField, Button } from "@mui/material";
+import { TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Form: React.FC = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [email, setEmail] = useState<string>("");
 
-  const handleSubmit = () => {
-
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const userDetails = { name, phoneNumber, email };
     localStorage.setItem("userDetails", JSON.stringify(userDetails));
-
-
+    navigate("/about");
+    
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <TextField
         label="Name"
         value={name}
@@ -37,17 +39,15 @@ const Form: React.FC = () => {
         fullWidth
         margin="normal"
       />
-      <div style={{ textAlign: "center", marginTop: "16px" }}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleSubmit}
-          style={{ width: "200px" }}
-        >
-          Submit
-        </Button>
-      </div>
-    </div>
+      {name && email && phoneNumber ? (
+        <>
+          {" "}
+          <input type="submit" value="Submit" />{" "}
+        </>
+      ) : (
+        <><input type="submit" value="Submit"  /></>
+      )}
+    </form>
   );
 };
 
