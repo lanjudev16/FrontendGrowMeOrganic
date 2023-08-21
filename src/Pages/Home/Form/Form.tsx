@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import './Form.css'
 
 const Form: React.FC = () => {
   const navigate = useNavigate();
@@ -39,14 +40,16 @@ const Form: React.FC = () => {
         fullWidth
         margin="normal"
       />
+      <div className="text-center">
       {name && email && phoneNumber ? (
         <>
           {" "}
-          <input type="submit" value="Submit" />{" "}
+          <input type="submit" value="Submit" className="submit_btn btn-styled" />{" "}
         </>
       ) : (
-        <><input type="submit" value="Submit"  /></>
+        <><input type="submit" value="Submit" className="submit_btn" disabled /></>
       )}
+      </div>
     </form>
   );
 };
