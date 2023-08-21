@@ -36,11 +36,6 @@ const DepartmentComponent: React.FC<DepartmentProps> = ({ department }) => {
     const updatedSubDepartments = [...subDepartments];
     updatedSubDepartments[index] = !updatedSubDepartments[index];
     setSubDepartments(updatedSubDepartments);
-    if (updatedSubDepartments.every(subDept => subDept)) {
-      setSelectAll(true);
-    } else if (selectAll) {
-      setSelectAll(false);
-    }
   };
 
   const handleToggleExpand = () => {

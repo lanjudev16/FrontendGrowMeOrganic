@@ -3,7 +3,7 @@ import { List } from '@mui/material';
 import DepartmentComponent from './DepartmentComponent';
 import { departments } from './departmentsData'; // Import your department data from the file
 
-const MainDept: React.FC = () => {
+const MainApp: React.FC = () => {
   return (
     <List>
       {departments.map((dept, index) => (
@@ -13,4 +13,4 @@ const MainDept: React.FC = () => {
   );
 };
 
-export default MainDept;
+export default MainApp;
